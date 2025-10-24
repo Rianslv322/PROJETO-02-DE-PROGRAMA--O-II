@@ -30,77 +30,52 @@ class Gerente(Funcionario):
 
         print("Dados salvos.")
 
-        
-
-gerente1 = Gerente("Rianlindao","123213-213",29,"Gerente",6000,600,123)
-
-gerente1.salvar() 
-
-
-    # def salvar_json(self,arquivo):
-    #     lista = []
-    #     for x in self.lista_funcionario:
-    #         lista.append(x.mostrar_dados())
-
-    #     with open(arquivo,"w",encoding="UTF-8") as dados:
-    #         json.dump(lista,dados,indent=4,ensure_ascii=False)
-
-    #     print(f"Dados salvos com sucesso em {arquivo}")
 
 
 
-        # def cadastrar_funcionaio(self, nome, cpf, idade, cargo, salario_base, descontos):
-        # novo_funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
-        # self.lista_funcionario.append(novo_funcionario)
+    def editar_informaces(self):
+        while True:
+            print("""
+        [1] Editar Nome    
+        [2] Editar Cargo
+        [3] Editar Salário
+        [4] Sair
+        """)
+            opcao = input("Opçao aqui --> ")
 
-        # lista = []
-        # for x in self.lista_funcionario:
-        #     lista.append(x.mostrar_dados())
+            if opcao == "1":
+                novo_nome = input("Novo Nome: ")
+                self.nome = novo_nome
+                print(f"Nome alterado.")
+                self.salvar()
 
-        # with open("arquivo.json","w",encoding="UTF-8") as dados:
-        #     json.dump(lista,dados,indent=4,ensure_ascii=False)
-
-        # print(f"Dados salvos.")
-
-
-        #parti pronta daqui pra baixo
-
-
-#     def editar_informaces(self):
-#         print("""
-#         [1] Editar Nome    
-#         [2] Editar Cargo
-#         [3] Editar Salário
-#         [4] Sair
-# """)
-#         while True:
-#             opcao = input("Opçao aqui --> ")
-
-
-#             if opcao == "1":
-#                 novo_nome = input("Novo Nome: ")
-#                 self.nome = novo_nome
-#                 return f"Nome alterado."
-
-#             if opcao == "2":
-#                 novo_cargo  = input("Novo Cargo: ")
-#                 self.cargo = novo_cargo
-#                 return f"Cargo alterado."
+            if opcao == "2":
+                novo_cargo  = input("Novo Cargo: ")
+                self.cargo = novo_cargo
+                print(f"Cargo alterado.")
             
-#             if opcao == "3":
-#                 novo_salario = float(input("Novo salário: "))
-#                 self.salario = novo_salario
-#                 return "Salário alterado."
+            if opcao == "3":
+                novo_salario = float(input("Novo salário: "))
+                self.salario = novo_salario
+                print("Salário alterado.")
             
-#             if opcao == "4":
-#                 return "Todas as alterações foram concluidas."
-#                 break
+            if opcao == "4":
+                print("Todas as alterações foram concluidas.")
+                break
+
+          
 
 
+gerente1 = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
+# gerente2 = Gerente("Maria Souza", "987654-321", 34, "Gerente de Vendas", 5800, 550, 456)
+# gerente3 = Gerente("Carlos Silva", "456789-123", 41, "Gerente de TI", 7200, 800, 789)
+# gerente4 = Gerente("Ana Oliveira", "321654-987", 27, "Gerente de Projetos", 6500, 500, 321)
+# gerente5 = Gerente("Lucas Pereira", "654321-789", 38, "Gerente Financeiro", 7000, 700, 654)
 
 
+gerente1.editar_informaces()
 
-
+print(gerente1.mostrar_dados())
 
 
 
