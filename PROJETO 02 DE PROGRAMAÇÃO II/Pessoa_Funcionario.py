@@ -1,3 +1,6 @@
+def linha():
+    print("=-"*14)
+
 class Pessoa:
     def __init__(self,nome,cpf,idade):
         self.nome = nome
@@ -43,10 +46,8 @@ class Funcionario(Pessoa):
             "Salario": self.salario,
             "Desconto": self.descontos}
             )
-        
         return dados
     
-
     def listar_dados(self):
         return {
             "nome": self.nome,
@@ -55,8 +56,21 @@ class Funcionario(Pessoa):
             "cargo": self.cargo,
             "salário": self.salario,
             "desconto": self.descontos
-
         }
+        
+        
+        
+        
+    def mostrar_dados_funcionario(self):
+        linha()
+        return (f"""
+        Nome: {self.nome}
+        CPF: {self.cpf}
+        Idade: {self.idade}
+        Cargo: {self.cargo}
+        Salário: {self.salario}:
+        Desconto: {self.descontos}""")
+        
 
 
 

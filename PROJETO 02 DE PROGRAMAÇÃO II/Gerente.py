@@ -6,15 +6,15 @@ class Gerente(Funcionario):
     def __init__(self, nome, cpf, idade, cargo, salario_base, descontos, senha):
         super().__init__(nome, cpf, idade, cargo, salario_base, descontos)
         self.senha = senha
-        self.lista_funcionario = []
+        self.lista_F= []
         self.funcionario = Funcionario(nome, cpf, idade, cargo, salario_base, descontos)
-        self.lista_funcionario.append(self.funcionario)
+        self.lista_F.append(self.funcionario)
         
         
     def cadastrar_funcionario(self, nome, cpf, idade, cargo, salario_base, descontos):
         self.funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
         novo_func = self.funcionario
-        self.lista_funcionario.append(novo_func)
+        self.lista_F.append(novo_func)
         print("Funcionário cadastrado.")
     
     
@@ -29,7 +29,7 @@ class Gerente(Funcionario):
             lista = []
 
         # Adiciona os novos funcionários
-        for x in self.lista_funcionario:
+        for x in self.lista_F:
             lista.append({
                 "nome": x.nome,
                 "cpf": x.cpf,
@@ -43,7 +43,7 @@ class Gerente(Funcionario):
         with open(self.dados, "w", encoding="utf-8") as f:
             json.dump(lista, f, indent=4, ensure_ascii=False)
 
-        print("Arquivo salvo com sucesso!")
+        print("Dados salvos.")
 
 
 
@@ -77,21 +77,32 @@ class Gerente(Funcionario):
                 print("Todas as alterações foram concluidas.")
                 break
             
-            
-            
-
-            
-    
-
-
         
-          
+    def remover_funcionario(self,nome):
+        nome = str(input("Nome do Funcionário: "))
+        
+        for posi,func in enumerate(self.lista_funcionario):
+            if nome in func.listar_dados().values():
+                del self.lista_F[posi]
+                print("Funcionário Demitido.")
+                
+                
+                
+    def listar_funcionarios(self):
+        print("++ LISTA DE FUNCIONÁRIO ++")
+        for x in self.lista_F:
+            print(x.mostrar_dados_funcionario())
+
+                
+            
 
 
 gerente1 = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
 
 gerente1.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
 gerente1.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
+
+gerente1.listar_funcionarios()
 gerente1.salvar()
 
 
