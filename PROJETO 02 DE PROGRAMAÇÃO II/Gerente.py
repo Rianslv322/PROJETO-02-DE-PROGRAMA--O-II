@@ -2,38 +2,52 @@ import json
 from Pessoa_Funcionario import *
 
 class Gerente(Funcionario):
+    dados = "Arquivo.json"
     def __init__(self, nome, cpf, idade, cargo, salario_base, descontos, senha):
         super().__init__(nome, cpf, idade, cargo, salario_base, descontos)
         self.senha = senha
         self.lista_funcionario = []
         self.funcionario = Funcionario(nome, cpf, idade, cargo, salario_base, descontos)
         self.lista_funcionario.append(self.funcionario)
-        self.salvar()
-
-    def mostrar_dados(self):
-        return {
-            "Nome": self.nome,
-            "CPF": self.cpf,
-            "Idade": self.idade,
-            "Cargo": self.cargo,
-            "Salário": self.salario,
-            "Desconto": self.descontos,
-            "Senha": self.senha
-        }
-
+        
+        
+    def cadastrar_funcionario(self, nome, cpf, idade, cargo, salario_base, descontos):
+        self.funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
+        novo_func = self.funcionario
+        self.lista_funcionario.append(novo_func)
+        print("Funcionário cadastrado.")
+    
+    
+    
+        
     def salvar(self):
-        lista = []
+    # Tenta ler o arquivo existente
+        try:
+            with open(self.dados, "r", encoding="utf-8") as f:
+                lista = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            lista = []
+
+        # Adiciona os novos funcionários
         for x in self.lista_funcionario:
-            lista.append(x.mostrar_dados()) 
-        with open("arquivo.json", "w", encoding="UTF-8") as dados:
-            json.dump(lista, dados, indent=4, ensure_ascii=False)
+            lista.append({
+                "nome": x.nome,
+                "cpf": x.cpf,
+                "idade": x.idade,
+                "cargo": x.cargo,
+                "salario": x.salario,
+                "desconto": x.descontos
+            })
 
-        print("Dados salvos.")
+        # Salva tudo de uma vez
+        with open(self.dados, "w", encoding="utf-8") as f:
+            json.dump(lista, f, indent=4, ensure_ascii=False)
+
+        print("Arquivo salvo com sucesso!")
 
 
 
-
-    def editar_informaces(self):
+    def editar_Funcionario(self):
         while True:
             print("""
         [1] Editar Nome    
@@ -62,20 +76,25 @@ class Gerente(Funcionario):
             if opcao == "4":
                 print("Todas as alterações foram concluidas.")
                 break
+            
+            
+            
 
+            
+    
+
+
+        
           
 
 
 gerente1 = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
-# gerente2 = Gerente("Maria Souza", "987654-321", 34, "Gerente de Vendas", 5800, 550, 456)
-# gerente3 = Gerente("Carlos Silva", "456789-123", 41, "Gerente de TI", 7200, 800, 789)
-# gerente4 = Gerente("Ana Oliveira", "321654-987", 27, "Gerente de Projetos", 6500, 500, 321)
-# gerente5 = Gerente("Lucas Pereira", "654321-789", 38, "Gerente Financeiro", 7000, 700, 654)
+
+gerente1.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
+gerente1.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
+gerente1.salvar()
 
 
-gerente1.editar_informaces()
-
-print(gerente1.mostrar_dados())
 
 
 

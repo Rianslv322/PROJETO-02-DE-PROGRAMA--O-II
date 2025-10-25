@@ -47,7 +47,7 @@ class Funcionario(Pessoa):
         return dados
     
 
-    def mostrar_dados(self):
+    def listar_dados(self):
         return {
             "nome": self.nome,
             "cpf": self.cpf,
