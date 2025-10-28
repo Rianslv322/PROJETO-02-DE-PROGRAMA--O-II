@@ -1,5 +1,5 @@
 import json
-from Pessoa_Funcionario import *
+from Funcionario import *
 
 class Gerente(Funcionario):
     dados = "Arquivo.json"
@@ -25,7 +25,7 @@ class Gerente(Funcionario):
         try:
             with open(self.dados, "r", encoding="utf-8") as f:
                 lista = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
+        except (FileNotFoundError, json.JSONDecodeError): #ocorre se o arquivo indicado por self.dados não existe. respectivamente 
             lista = []
 
         # Adiciona os novos funcionários
@@ -78,10 +78,10 @@ class Gerente(Funcionario):
                 break
             
         
-    def remover_funcionario(self,nome):
+    def remover_funcionario(self):
         nome = str(input("Nome do Funcionário: "))
         
-        for posi,func in enumerate(self.lista_funcionario):
+        for posi,func in enumerate(self.lista_F):
             if nome in func.listar_dados().values():
                 del self.lista_F[posi]
                 print("Funcionário Demitido.")
@@ -102,9 +102,9 @@ gerente1 = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
 gerente1.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
 gerente1.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
 
-gerente1.listar_funcionarios()
-gerente1.salvar()
-
+# gerente1.salvar()
+# gerente1.remover_funcionario()
+# gerente1.salvar()
 
 
 
