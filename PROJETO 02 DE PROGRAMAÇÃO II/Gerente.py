@@ -1,5 +1,6 @@
 import json
 from Funcionario import *
+from Folha_de_pagameto import *
 
 class Gerente(Funcionario):
     dados = "Arquivo.json"
@@ -7,13 +8,13 @@ class Gerente(Funcionario):
         super().__init__(nome, cpf, idade, cargo, salario_base, descontos)
         self.senha = senha
         self.lista_F= []
-        self.funcionario = Funcionario(nome, cpf, idade, cargo, salario_base, descontos)
-        self.lista_F.append(self.funcionario)
+
+
         
         
     def cadastrar_funcionario(self, nome, cpf, idade, cargo, salario_base, descontos):
-        self.funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
-        novo_func = self.funcionario
+        funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
+        novo_func = funcionario
         self.lista_F.append(novo_func)
         print("Funcionário cadastrado.")
     
@@ -22,6 +23,7 @@ class Gerente(Funcionario):
         
     def salvar(self):
     # Tenta ler o arquivo existente
+
         try:
             with open(self.dados, "r", encoding="utf-8") as f:
                 lista = json.load(f)
@@ -30,14 +32,22 @@ class Gerente(Funcionario):
 
         # Adiciona os novos funcionários
         for x in self.lista_F:
-            lista.append({
-                "nome": x.nome,
-                "cpf": x.cpf,
-                "idade": x.idade,
-                "cargo": x.cargo,
-                "salario": x.salario,
-                "desconto": x.descontos
-            })
+            ja_existe = False
+            
+            for func in lista:
+                if func["cpf"] == x.cpf:
+                    ja_existe = True
+                    break
+                
+            if not ja_existe:
+                lista.append({
+                    "nome": x.nome,
+                    "cpf": x.cpf,
+                    "idade": x.idade,
+                    "cargo": x.cargo,
+                    "salario": x.salario,
+                    "desconto": x.descontos
+                })
 
         # Salva tudo de uma vez
         with open(self.dados, "w", encoding="utf-8") as f:
@@ -92,6 +102,14 @@ class Gerente(Funcionario):
         print("++ LISTA DE FUNCIONÁRIO ++")
         for x in self.lista_F:
             print(x.mostrar_dados_funcionario())
+            
+    
+     
+    def gerar_folha_de_pagamento(self):
+        for x in self.lista_F:
+            if x not in self.lista_F:
+                print(x.calcular_salario())
+
 
                 
             
@@ -102,9 +120,9 @@ gerente1 = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
 gerente1.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
 gerente1.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
 
-# gerente1.salvar()
-# gerente1.remover_funcionario()
-# gerente1.salvar()
+gerente1.salvar()
+gerente1.gerar_folha_de_pagamento()
+
 
 
 

@@ -14,9 +14,9 @@ class Funcionario():
 
         
 
-    def calcar_salario(self):
+    def calcular_salario(self):
         salario_liquido = (self.salario - self.descontos)
-        return f"Salário líquido do funcionário: {salario_liquido}"
+        return f"Salário líquido do funcionário {self.nome}: {salario_liquido}"
     
 
     def salvar(self):
