@@ -30,19 +30,22 @@ while True:
         salario = float(input("Salário: "))
         descontos = float(input("Desconto: "))
         Gerente_geral_da_Empresa.cadastrar_funcionario(nome,cpf,idade,cargo,salario,descontos)
+        Gerente_geral_da_Empresa.salvar()
         
     if opcao ==2:
-        Gerente_geral_da_Empresa.editar_Funcionario()
+        Gerente_geral_da_Empresa.editar_Funcionario
         
     if opcao == 3:
-        Gerente_geral_da_Empresa.remover_funcionario()
+        Gerente_geral_da_Empresa.remover_funcionario
         
     if opcao == 4:
-        Gerente_geral_da_Empresa.listar_funcionarios()
+        Gerente_geral_da_Empresa.listar_funcionarios
         
         
     if opcao == 5:
         Gerente_geral_da_Empresa.gerar_folha_de_pagamento()
+        
+    Gerente_geral_da_Empresa.salvar()
         
     
         

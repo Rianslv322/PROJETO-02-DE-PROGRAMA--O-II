@@ -1,6 +1,6 @@
 import json
 from Funcionario import *
-from Folha_de_pagameto import *
+# from Folha_de_pagameto import *
 
 class Gerente(Funcionario):
     dados = "Arquivo.json"
@@ -10,25 +10,22 @@ class Gerente(Funcionario):
         self.lista_F= []
 
 
-        
-        
     def cadastrar_funcionario(self, nome, cpf, idade, cargo, salario_base, descontos):
         funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
-        novo_func = funcionario
-        self.lista_F.append(novo_func)
+        self.lista_F.append(funcionario)
         print("Funcionário cadastrado.")
     
-    
-    
-        
+      
     def salvar(self):
-    # Tenta ler o arquivo existente
-
         try:
+        # Tenta carregar os dados existentes
             with open(self.dados, "r", encoding="utf-8") as f:
                 lista = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError): #ocorre se o arquivo indicado por self.dados não existe. respectivamente 
+        except (FileNotFoundError, json.JSONDecodeError):
+            # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
             lista = []
+            
+        
 
         # Adiciona os novos funcionários
         for x in self.lista_F:
@@ -56,7 +53,7 @@ class Gerente(Funcionario):
         print("Dados salvos.")
 
 
-
+    @property
     def editar_Funcionario(self):
         while True:
             print("""
@@ -66,28 +63,39 @@ class Gerente(Funcionario):
         [4] Sair
         """)
             opcao = input("Opçao aqui --> ")
+            nome = input("Digite o Nome do Funcnionário --> ")
+            
+            for x in self.lista_F:
+                if nome == x.nome:
 
-            if opcao == "1":
-                novo_nome = input("Novo Nome: ")
-                self.nome = novo_nome
-                print(f"Nome alterado.")
-                self.salvar()
+                    if opcao == "1":
+                        novo_nome = input("Novo Nome: ")
+                        x.nome = novo_nome
+                        print(f"Nome alterado.")
 
-            if opcao == "2":
-                novo_cargo  = input("Novo Cargo: ")
-                self.cargo = novo_cargo
-                print(f"Cargo alterado.")
-            
-            if opcao == "3":
-                novo_salario = float(input("Novo salário: "))
-                self.salario = novo_salario
-                print("Salário alterado.")
-            
-            if opcao == "4":
-                print("Todas as alterações foram concluidas.")
-                break
-            
-        
+
+                    if opcao == "2":
+                        novo_cargo  = input("Novo Cargo: ")
+                        self.cargo = novo_cargo
+                        print(f"Cargo alterado.")
+
+                    
+                    if opcao == "3":
+                        novo_salario = float(input("Novo salário: "))
+                        self.salario = novo_salario
+                        print("Salário alterado.")
+
+                    
+                    if opcao == "4":
+                        print("Todas as alterações foram concluidas.")
+                        break
+                    self.salvar()
+                    
+                else:
+                    return f"Funcnionário não encontrado"
+            break
+                
+    @property
     def remover_funcionario(self):
         nome = str(input("Nome do Funcionário: "))
         
@@ -97,14 +105,13 @@ class Gerente(Funcionario):
                 print("Funcionário Demitido.")
                 
                 
-                
+    @property
     def listar_funcionarios(self):
         print("++ LISTA DE FUNCIONÁRIO ++")
         for x in self.lista_F:
             print(x.mostrar_dados_funcionario())
             
     
-     
     def gerar_folha_de_pagamento(self):
         for x in self.lista_F:
             if x not in self.lista_F:
@@ -115,13 +122,8 @@ class Gerente(Funcionario):
             
 
 
-Gerente_geral_da_Empresa = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
-
-# Gerente_geral_da_Empresa.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
-# Gerente_geral_da_Empresa.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
-
-# Gerente_geral_da_Empresa.salvar()
-# Gerente_geral_da_Empresa.gerar_folha_de_pagamento()
+Gerente_geral_da_Empresa = Gerente("Rian Silva", "123.321-678-45", 29, "Gerente", 6000, 600, 123)
+# Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
 
 
 
