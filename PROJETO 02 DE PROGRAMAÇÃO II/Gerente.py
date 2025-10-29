@@ -120,18 +120,7 @@ class Gerente(Funcionario):
 
 
 Gerente_geral_da_Empresa = Gerente("Rian Silva", "123.321-678-45", 29, "Gerente", 6000, 600, 123)
-# Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
-
-Gerente_geral_da_Empresa = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
-
-Gerente_geral_da_Empresa.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
-Gerente_geral_da_Empresa.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
-
-
-Gerente_geral_da_Empresa.listar_funcionarios()
-
-
-Gerente_geral_da_Empresa.salvar_dados()
+#Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
 
 
 
