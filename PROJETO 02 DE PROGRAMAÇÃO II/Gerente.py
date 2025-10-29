@@ -9,21 +9,16 @@ class Gerente(Funcionario):
         self.senha = senha
         self.lista_F= []
 
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> b9042e2f13f113fde222da5ed1758029f7f0e32e
+
+
     def cadastrar_funcionario(self, nome, cpf, idade, cargo, salario_base, descontos):
         funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
         self.lista_F.append(funcionario)
         print("Funcionário cadastrado.")
-<<<<<<< HEAD
-    
+
       
     def salvar(self):
-=======
->>>>>>> b9042e2f13f113fde222da5ed1758029f7f0e32e
         try:
         # Tenta carregar os dados existentes
             with open(self.dados, "r", encoding="utf-8") as f:
@@ -63,38 +58,16 @@ class Gerente(Funcionario):
         [4] Sair
         """)
             opcao = input("Opçao aqui --> ")
-<<<<<<< HEAD
-            nome = input("Digite o Nome do Funcnionário --> ")
-            
-            for x in self.lista_F:
-                if nome == x.nome:
 
-                    if opcao == "1":
-                        novo_nome = input("Novo Nome: ")
-                        x.nome = novo_nome
-                        print(f"Nome alterado.")
-=======
-            nome = input("Nome do Funcionário")
+            nome = input("Digite o Nome do Funcnionário --> ")
             
             funcionario = None
             for func in self.lista_F:
                 if func.nome == nome:
-                    funcionario = func
-                    break
-
-            if not funcionario:
-                print("Funcionário não encontrado.")
-                continue
-
-            
-
-            if opcao == "1":
-                novo_nome = input("Novo Nome: ")
-                self.nome = novo_nome
-                print(f"Nome alterado.")
-                self.salvar_dados()
->>>>>>> b9042e2f13f113fde222da5ed1758029f7f0e32e
-
+                    if opcao == "1":
+                        novo_nome = input("Novo Nome: ")
+                        self.nome = novo_nome
+                        print(f"Nome alterado.")
 
                     if opcao == "2":
                         novo_cargo  = input("Novo Cargo: ")
@@ -111,12 +84,13 @@ class Gerente(Funcionario):
                     if opcao == "4":
                         print("Todas as alterações foram concluidas.")
                         break
-                    self.salvar()
-                    
-                else:
-                    return f"Funcnionário não encontrado"
-            break
+             
+                    else:
+                        return f"Funcnionário não encontrado"
+                    break
                 
+                self.salvar()
+                        
     @property
     def remover_funcionario(self):
         nome = str(input("Nome do Funcionário: "))
@@ -144,15 +118,15 @@ class Gerente(Funcionario):
             
 
 
-<<<<<<< HEAD
+
 Gerente_geral_da_Empresa = Gerente("Rian Silva", "123.321-678-45", 29, "Gerente", 6000, 600, 123)
 # Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
-=======
+
 Gerente_geral_da_Empresa = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
 
 Gerente_geral_da_Empresa.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
 Gerente_geral_da_Empresa.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
->>>>>>> b9042e2f13f113fde222da5ed1758029f7f0e32e
+
 
 Gerente_geral_da_Empresa.listar_funcionarios()
 
