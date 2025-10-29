@@ -115,13 +115,13 @@ class Gerente(Funcionario):
             
 
 
-gerente1 = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
+Gerente_geral_da_Empresa = Gerente("Rianlindao", "123213-213", 29, "Gerente", 6000, 600, 123)
 
-gerente1.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
-gerente1.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
+# Gerente_geral_da_Empresa.cadastrar_funcionario("Maria Souza", "987654-321", 34, "Vendas", 5800, 550)
+# Gerente_geral_da_Empresa.cadastrar_funcionario("Carlos Silva", "456789-123", 41, "TI", 7200, 800)
 
-gerente1.salvar()
-gerente1.gerar_folha_de_pagamento()
+# Gerente_geral_da_Empresa.salvar()
+# Gerente_geral_da_Empresa.gerar_folha_de_pagamento()
 
 
 
