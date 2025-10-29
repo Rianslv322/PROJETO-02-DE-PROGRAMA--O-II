@@ -23,9 +23,6 @@ class Gerente(Funcionario):
       
     def salvar(self):
 =======
-
-
-    def salvar_dados(self):
 >>>>>>> b9042e2f13f113fde222da5ed1758029f7f0e32e
         try:
         # Tenta carregar os dados existentes
