@@ -15,8 +15,9 @@ while True:
 [2] Editar Dados Funcionário
 [3] Remover Funcioinário
 [4] Listar Funcionário
-[5] Gerar Folha de Pagamento(funcionário)
-[6] Acessar Dados do Funcionário
+[5] Gerar Folha de Pagamento individual(funcionário)
+[6] Gerar Relatório Geral
+[7] Acessar Dados do Funcionário
 [0] Sair 
 """)
     
@@ -47,9 +48,12 @@ while True:
         folhadepagar.gerente.listar_funcionarios
         
         
-    # if opcao == 5:
-    #     folhadepagar.gerente.gerar_folha_de_pagamento()
+    if opcao == 5:
+        folhadepagar.gerar_relatorio_individual()
         
+    if opcao == 6:
+        folhadepagar.gerar_relatorio()
+
         
         
     

@@ -21,6 +21,7 @@ Descontos: {x.descontos}
         for x in self.gerente.lista_F:
             if x.cpf == cpf:
                 print(x.mostrar_dados_funcionario())
+                print(x.calcular_salario())
 
     
 
