@@ -29,23 +29,26 @@ while True:
         cargo = str(input("Cargo: "))
         salario = float(input("Salário: "))
         descontos = float(input("Desconto: "))
-        Gerente_geral_da_Empresa.cadastrar_funcionario(nome,cpf,idade,cargo,salario,descontos)
-        Gerente_geral_da_Empresa.Salvar_Dados()
+        folhadepagar.gerente.cadastrar_funcionario(nome,cpf,idade,cargo,salario,descontos)
+        folhadepagar.gerente.Salvar_Dados()
+
+    if opcao == 1:
+        folhadepagar.gerente.cadastrar_funcionario
         
     if opcao ==2:
-        Gerente_geral_da_Empresa.editar_Funcionario
+        folhadepagar.gerente.editar_Funcionario
         
         
     if opcao == 3:
-        Gerente_geral_da_Empresa.remover_funcionario
+        folhadepagar.gerente.remover_funcionario
         
         
     if opcao == 4:
-        Gerente_geral_da_Empresa.listar_funcionarios
+        folhadepagar.gerente.listar_funcionarios
         
         
-    if opcao == 5:
-        Gerente_geral_da_Empresa.gerar_folha_de_pagamento()
+    # if opcao == 5:
+    #     folhadepagar.gerente.gerar_folha_de_pagamento()
         
         
         

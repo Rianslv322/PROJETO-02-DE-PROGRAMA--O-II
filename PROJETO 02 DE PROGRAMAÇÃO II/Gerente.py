@@ -52,22 +52,27 @@ class Gerente(Funcionario):
     def editar_Funcionario(self):
         while True:
             print("""
-        [1] Editar Nome    
-        [2] Editar Cargo
-        [3] Editar Salário
-        [4] Sair
-        """)
+            [1] Editar Nome    
+            [2] Editar Cargo
+            [3] Editar Salário
+            [4] Sair
+            """)
             opcao = input("Opção aqui --> ")
 
+            if opcao == "4":
+                print("Saindo da edição...")
+                break
+
             nome = input("Digite o Nome do Funcionário --> ")
-            
+            encontrado = False
+
             for func in self.lista_F:
                 if func.nome == nome:
+                    encontrado = True
                     if opcao == "1":
                         novo_nome = input("Novo Nome: ")
                         func.nome = novo_nome
                         print("Nome alterado.")
-                        self.Salvar_Dados()
 
                     elif opcao == "2":
                         novo_cargo = input("Novo Cargo: ")
@@ -79,14 +84,12 @@ class Gerente(Funcionario):
                         func.salario = novo_salario
                         print("Salário alterado.")
 
-                    elif opcao == "4":
-                        print("Saindo da edição...")
-                        return
+                    self.Salvar_Dados()
                     break
-                self.Salvar_Dados()
-            else:
+
+            if not encontrado:
                 print("Funcionário não encontrado.")
-            break
+
 
                         
     @property
@@ -117,9 +120,10 @@ class Gerente(Funcionario):
 
 
 
-Gerente_geral_da_Empresa = Gerente("Rian Silva", "123.321-678-45", 29, "Gerente", 6000, 600, 123)
-# Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
 
+# Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
+# Gerente_geral_da_Empresa.Salvar_Dados()
+# Gerente_geral_da_Empresa.editar_Funcionario()
 
 
 
