@@ -69,27 +69,24 @@ class Gerente(Funcionario):
                         novo_nome = input("Novo Nome: ")
                         self.nome = novo_nome
                         print(f"Nome alterado.")
+                        self.Salvar_Dados()
 
                     if opcao == "2":
                         novo_cargo  = input("Novo Cargo: ")
                         self.cargo = novo_cargo
                         print(f"Cargo alterado.")
-
+                        self.Salvar_Dados()
                     
                     if opcao == "3":
                         novo_salario = float(input("Novo salário: "))
                         self.salario = novo_salario
                         print("Salário alterado.")
+                        self.Salvar_Dados()
 
                     
                     if opcao == "4":
                         print("Todas as alterações foram concluidas.")
-                        break
-             
-                    else:
-                        return f"Funcnionário não encontrado"
-
-                self.Salvar_Dados()
+                        break      
             break
                         
     @property

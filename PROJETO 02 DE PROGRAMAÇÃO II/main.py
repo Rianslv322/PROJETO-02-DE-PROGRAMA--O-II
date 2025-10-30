@@ -35,6 +35,7 @@ while True:
     if opcao ==2:
         Gerente_geral_da_Empresa.editar_Funcionario
         
+        
     if opcao == 3:
         Gerente_geral_da_Empresa.remover_funcionario
         
@@ -44,6 +45,7 @@ while True:
         
     if opcao == 5:
         Gerente_geral_da_Empresa.gerar_folha_de_pagamento()
+        
         
         
     
