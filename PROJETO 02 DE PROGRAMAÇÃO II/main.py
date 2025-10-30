@@ -39,6 +39,7 @@ while True:
     if opcao == 3:
         Gerente_geral_da_Empresa.remover_funcionario
         
+        
     if opcao == 4:
         Gerente_geral_da_Empresa.listar_funcionarios
         

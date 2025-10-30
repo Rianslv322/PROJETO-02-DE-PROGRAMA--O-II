@@ -26,10 +26,8 @@ class Gerente(Funcionario):
         except (FileNotFoundError, json.JSONDecodeError):
             # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
             lista = []
-            
-            
-        
 
+    
         # Adiciona os novos funcionários
         for x in self.lista_F:
             ja_existe = False
@@ -59,35 +57,37 @@ class Gerente(Funcionario):
         [3] Editar Salário
         [4] Sair
         """)
-            opcao = input("Opçao aqui --> ")
+            opcao = input("Opção aqui --> ")
 
-            nome = input("Digite o Nome do Funcnionário --> ")
+            nome = input("Digite o Nome do Funcionário --> ")
             
             for func in self.lista_F:
                 if func.nome == nome:
                     if opcao == "1":
                         novo_nome = input("Novo Nome: ")
-                        self.nome = novo_nome
-                        print(f"Nome alterado.")
+                        func.nome = novo_nome
+                        print("Nome alterado.")
                         self.Salvar_Dados()
 
-                    if opcao == "2":
-                        novo_cargo  = input("Novo Cargo: ")
-                        self.cargo = novo_cargo
-                        print(f"Cargo alterado.")
-                        self.Salvar_Dados()
-                    
-                    if opcao == "3":
+                    elif opcao == "2":
+                        novo_cargo = input("Novo Cargo: ")
+                        func.cargo = novo_cargo
+                        print("Cargo alterado.")
+
+                    elif opcao == "3":
                         novo_salario = float(input("Novo salário: "))
-                        self.salario = novo_salario
+                        func.salario = novo_salario
                         print("Salário alterado.")
-                        self.Salvar_Dados()
 
-                    
-                    if opcao == "4":
-                        print("Todas as alterações foram concluidas.")
-                        break      
+                    elif opcao == "4":
+                        print("Saindo da edição...")
+                        return
+                    break
+                self.Salvar_Dados()
+            else:
+                print("Funcionário não encontrado.")
             break
+
                         
     @property
     def remover_funcionario(self):

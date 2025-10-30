@@ -1,0 +1,18 @@
+[
+    {
+        "Nome": "Rian",
+        "Cpf": "1",
+        "Idade": 2,
+        "Cargo": "y",
+        "Salario": 44.0,
+        "Desconto": 1.0
+    },
+    {
+        "Nome": "GEGEGE",
+        "Cpf": "1",
+        "Idade": 2,
+        "Cargo": "y",
+        "Salario": 44.0,
+        "Desconto": 1.0
+    }
+]
