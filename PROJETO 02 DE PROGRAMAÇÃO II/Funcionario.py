@@ -2,7 +2,6 @@ def linha():
     print("=-"*18)
         
 
-
 class Funcionario():
     def __init__(self, nome, cpf, idade,cargo,salario_base,descontos):
         self.nome = nome
@@ -28,19 +27,6 @@ class Funcionario():
             "Salario": self.salario,
             "Desconto": self.descontos}
 
-        
-    
-    # def listar_dados(self):
-    #     return {
-    #         "nome": self.nome,
-    #         "cpf": self.cpf,
-    #         "idade": self.idade,
-    #         "cargo": self.cargo,
-    #         "salário": self.salario,
-    #         "desconto": self.descontos
-    #     }
-        
-        
         
         
     def mostrar_dados_funcionario(self):

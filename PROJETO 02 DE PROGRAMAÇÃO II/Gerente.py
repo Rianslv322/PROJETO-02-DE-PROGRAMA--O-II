@@ -63,7 +63,6 @@ class Gerente(Funcionario):
 
             nome = input("Digite o Nome do Funcnionário --> ")
             
-            funcionario = None
             for func in self.lista_F:
                 if func.nome == nome:
                     if opcao == "1":
@@ -89,9 +88,9 @@ class Gerente(Funcionario):
              
                     else:
                         return f"Funcnionário não encontrado"
-                    break
-                
+
                 self.Salvar_Dados()
+            break
                         
     @property
     def remover_funcionario(self):

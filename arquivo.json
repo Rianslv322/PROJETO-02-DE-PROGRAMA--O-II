@@ -1,18 +1,10 @@
 [
     {
-        "Nome": "Rian lindao",
-        "Cpf": "123",
-        "Idade": 19,
-        "Cargo": "21",
-        "Salario": 1232131.0,
-        "Desconto": 213.0
-    },
-    {
-        "Nome": "Ana",
-        "Cpf": "741-852",
-        "Idade": 26,
-        "Cargo": "TI",
-        "Salario": 5000,
-        "Desconto": 600
+        "Nome": "João fr ango",
+        "Cpf": "4545",
+        "Idade": 22,
+        "Cargo": "gestor",
+        "Salario": 4000.0,
+        "Desconto": 400.0
     }
 ]

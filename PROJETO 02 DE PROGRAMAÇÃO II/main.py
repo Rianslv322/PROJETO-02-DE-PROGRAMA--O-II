@@ -45,7 +45,6 @@ while True:
     if opcao == 5:
         Gerente_geral_da_Empresa.gerar_folha_de_pagamento()
         
-    Gerente_geral_da_Empresa.Salvar_Dados()
         
     
         
