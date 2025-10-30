@@ -6,5 +6,13 @@
         "Cargo": "21",
         "Salario": 1232131.0,
         "Desconto": 213.0
+    },
+    {
+        "Nome": "Ana",
+        "Cpf": "741-852",
+        "Idade": 26,
+        "Cargo": "TI",
+        "Salario": 5000,
+        "Desconto": 600
     }
 ]

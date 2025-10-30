@@ -18,7 +18,7 @@ class Gerente(Funcionario):
         print("Funcionário cadastrado.")
 
       
-    def salvar(self):
+    def Salvar_Dados(self):
         try:
         # Tenta carregar os dados existentes
             with open(self.dados, "r", encoding="utf-8") as f:
@@ -27,14 +27,16 @@ class Gerente(Funcionario):
             # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
             lista = []
             
+            
         
 
         # Adiciona os novos funcionários
         for x in self.lista_F:
             ja_existe = False
+            lista.append(x.salvar())
             
             for func in lista:
-                if func["cpf"] == x.cpf:
+                if func["Cpf"] == x.cpf:
                     ja_existe = True
                     break
                 
@@ -89,7 +91,7 @@ class Gerente(Funcionario):
                         return f"Funcnionário não encontrado"
                     break
                 
-                self.salvar()
+                self.Salvar_Dados()
                         
     @property
     def remover_funcionario(self):
@@ -120,7 +122,8 @@ class Gerente(Funcionario):
 
 
 Gerente_geral_da_Empresa = Gerente("Rian Silva", "123.321-678-45", 29, "Gerente", 6000, 600, 123)
-#Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
+# Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
+
 
 
 

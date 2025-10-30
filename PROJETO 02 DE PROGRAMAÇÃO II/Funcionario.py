@@ -30,15 +30,15 @@ class Funcionario():
 
         
     
-    def listar_dados(self):
-        return {
-            "nome": self.nome,
-            "cpf": self.cpf,
-            "idade": self.idade,
-            "cargo": self.cargo,
-            "salário": self.salario,
-            "desconto": self.descontos
-        }
+    # def listar_dados(self):
+    #     return {
+    #         "nome": self.nome,
+    #         "cpf": self.cpf,
+    #         "idade": self.idade,
+    #         "cargo": self.cargo,
+    #         "salário": self.salario,
+    #         "desconto": self.descontos
+    #     }
         
         
         
