@@ -14,8 +14,8 @@ while True:
 [1] Cadastrar Funcionário
 [2] Editar Dados Funcionário
 [3] Remover Funcioinário
-[4] Listar Funcionário
-[5] Gerar Folha de Pagamento individual(funcionário)
+[4] Listar Funcionário 
+[5] Gerar Folha de Pagamento individual(funcionário) 
 [6] Gerar Relatório Geral
 [7] Acessar Dados do Funcionário
 [0] Sair 
@@ -31,7 +31,7 @@ while True:
         salario = float(input("Salário: "))
         descontos = float(input("Desconto: "))
         folhadepagar.gerente.cadastrar_funcionario(nome,cpf,idade,cargo,salario,descontos)
-        
+    
 
     if opcao == 1:
         folhadepagar.gerente.cadastrar_funcionario
@@ -45,7 +45,9 @@ while True:
         
         
     if opcao == 4:
+        folhadepagar.gerente.carregar_dados()
         folhadepagar.gerente.listar_funcionarios
+        
         
         
     if opcao == 5:

@@ -18,39 +18,86 @@ class Gerente(Funcionario):
         print("Funcionário cadastrado.")
         self.Salvar_Dados()
 
-      
+
+
+    def Atualizar_dados(self, dados, novo_dado, tipo):
+        try:
+        # carrega os dados existentes
+            with open(self.dados, "r", encoding="utf-8") as f:
+                lista = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
+            lista = []
+
+        for i, x in enumerate(lista):
+            if x[f"{tipo}"] == dados[f"{tipo}"]:
+                dados[f"{tipo}"] = novo_dado                    
+                lista[i] = dados 
+
+                break
+        # elif tipo == "Cargo":
+        #     for i, x in enumerate(lista):
+        #         if x["Cargo"] == dados["Cargo"]:
+        #             dados["Cargo"] = novo_dado                    
+        #             lista[i] = dados 
+
+
+
+            
+        # Salva tudo de uma vez
+        with open(self.dados, "w", encoding="utf-8") as f:
+            json.dump(lista, f, indent=4, ensure_ascii=False)
+        print("Dados salvos.")
     def Salvar_Dados(self):
-        # try:
-        # # Tenta carregar os dados existentes
-        #     with open(self.dados, "r", encoding="utf-8") as f:
-        #         lista = json.load(f)
-        # except (FileNotFoundError, json.JSONDecodeError):
-        #     # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
-        lista = []
+        try:
+        # carrega os dados existentes
+            with open(self.dados, "r", encoding="utf-8") as f:
+                lista = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
+            lista = []
 
     
         # Adiciona os novos funcionários
         for x in self.lista_F:
             ja_existe = False
-            lista.append(x.salvar())
-            
             for func in lista:
-                if func["Cpf"] == x.cpf:
+
+                if func["Nome"] == x.nome:
                     ja_existe = True
+
                     break
                 
             if not ja_existe:
                 lista.append(x.salvar())
-
         # Salva tudo de uma vez
         with open(self.dados, "w", encoding="utf-8") as f:
             json.dump(lista, f, indent=4, ensure_ascii=False)
-
         print("Dados salvos.")
+
+    def carregar_dados(self):
+        """Carrega os dados do arquivo JSON e recria os objetos Funcionario."""
+        try:
+            with open(self.dados, "r", encoding="utf-8") as f:
+                lista = json.load(f)
+                for func in lista:
+                    funcionario = Funcionario(
+                        func["Nome"],
+                        func["Cpf"],
+                        func["Idade"],
+                        func["Cargo"],
+                        func["Salario"],
+                        func["Desconto"]
+                    )
+                    self.lista_F.append(funcionario)
+    
+        except (FileNotFoundError, json.JSONDecodeError):
+            print("Nenhum dado anterior encontrado.")
 
 
     @property
     def editar_Funcionario(self):
+        self.carregar_dados()
         while True:
             print("""
             [1] Editar Nome    
@@ -64,28 +111,34 @@ class Gerente(Funcionario):
                 print("Saindo da edição...")
                 break
 
-            nome = input("Digite o Nome do Funcionário --> ")
+            # nome = input("Digite o Nome do Funcionário --> ")
+            #tipo_dado = input("Digite o tipo de dado: ")
             encontrado = False
 
             for func in self.lista_F:
+                nome = input("Digite o Nome do Funcionário --> ")
                 if func.nome == nome:
                     encontrado = True
-                    if opcao == "1":
-                        novo_nome = input("Novo Nome: ")
-                        func.nome = novo_nome
+                    if opcao == "1":  
+                        tipo_dado = "Nome"
+                        novo_dado = input("Novo Nome: ")
                         print("Nome alterado.")
 
                     elif opcao == "2":
-                        novo_cargo = input("Novo Cargo: ")
-                        func.cargo = novo_cargo
+                        novo_dado = input("Novo Cargo: ")
+                        tipo_dado = "Cargo"
+
                         print("Cargo alterado.")
 
                     elif opcao == "3":
-                        novo_salario = float(input("Novo salário: "))
-                        func.salario = novo_salario
+                        novo_dado = float(input("Novo salário: "))
+                        tipo_dado = "Salario"
+
                         print("Salário alterado.")
 
-                    self.Salvar_Dados()
+                    dicio = func.salvar()
+                    self.Atualizar_dados(dicio, novo_dado, tipo_dado)
+                    
                     break
 
             if not encontrado:
@@ -112,6 +165,7 @@ class Gerente(Funcionario):
             
     
     def gerar_folha_de_pagamento(self):
+        self.carregar_dados()
         for x in self.lista_F:
             print(x.calcular_salario())
 
@@ -125,7 +179,6 @@ class Gerente(Funcionario):
 # Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
 # Gerente_geral_da_Empresa.Salvar_Dados()
 # Gerente_geral_da_Empresa.editar_Funcionario()
-
 
 
 

@@ -1,10 +1,10 @@
 [
     {
-        "Nome": "Rian",
+        "Nome": "kayke",
         "Cpf": "123",
         "Idade": 22,
-        "Cargo": "Ti",
-        "Salario": 2000.0,
-        "Desconto": 200.0
+        "Cargo": "Gestor",
+        "Salario": 200000.0,
+        "Desconto": 2000.0
     }
 ]
