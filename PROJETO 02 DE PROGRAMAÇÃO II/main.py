@@ -36,7 +36,7 @@ while True:
         folhadepagar.gerente.cadastrar_funcionario
         
     if opcao ==2:
-        folhadepagar.gerente.editar_Funcionario
+        folhadepagar.gerente.editar_Funcionario()
         
         
     if opcao == 3:

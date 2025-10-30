@@ -4,15 +4,7 @@
         "Cpf": "123",
         "Idade": 22,
         "Cargo": "TI",
-        "Salario": 20.0,
-        "Desconto": 2.0
-    },
-    {
-        "Nome": "Pedro",
-        "Cpf": "123",
-        "Idade": 22,
-        "Cargo": "TI",
-        "Salario": 20.0,
-        "Desconto": 2.0
+        "Salario": 3000.0,
+        "Desconto": 200.0
     }
 ]
