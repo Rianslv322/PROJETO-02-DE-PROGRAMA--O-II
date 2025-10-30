@@ -11,6 +11,11 @@ class Funcionario():
         self.salario = salario_base
         self.descontos = descontos
 
+    
+    @property
+    def ver_nome(self):
+        return f"Nome do Funcionário: {self.nome}"
+
         
 
     def calcular_salario(self):

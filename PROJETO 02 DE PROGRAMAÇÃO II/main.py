@@ -31,7 +31,7 @@ while True:
         salario = float(input("Salário: "))
         descontos = float(input("Desconto: "))
         folhadepagar.gerente.cadastrar_funcionario(nome,cpf,idade,cargo,salario,descontos)
-        folhadepagar.gerente.Salvar_Dados()
+        
 
     if opcao == 1:
         folhadepagar.gerente.cadastrar_funcionario
@@ -54,8 +54,32 @@ while True:
     if opcao == 6:
         folhadepagar.gerar_relatorio()
 
-        
-        
+    if opcao ==7:
+        while True:
+            print("\nMenu de Opções (Digite o número correspondente)")
+            print("1 - Acessar Nome")
+            print("2 - Acessar CPF")
+            print("3 - Acessar Idade")
+            print("4 - Acessar Cargo")
+            print("5 - Acessar Salário Base")
+            print("0 - Sair")
+
+            op = int(input("Opção aqui --> "))
+
+
+            if op == 1:
+                for x in folhadepagar.gerente.lista_F:
+                    print(f"Nome: {x.nome}")
+                break
+            elif op == 2:
+                for x in folhadepagar.gerente.lista_F:
+                    print(f"CPF: {x.cpf}")
+
+            elif op == 3:
+                for x in folhadepagar.gerente.lista_F:
+                    print(f"CPF: {x.idade}")
+
+            
     
         
         

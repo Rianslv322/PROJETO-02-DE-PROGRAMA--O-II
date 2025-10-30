@@ -16,16 +16,17 @@ class Gerente(Funcionario):
         funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
         self.lista_F.append(funcionario)
         print("Funcionário cadastrado.")
+        self.Salvar_Dados()
 
       
     def Salvar_Dados(self):
-        try:
-        # Tenta carregar os dados existentes
-            with open(self.dados, "r", encoding="utf-8") as f:
-                lista = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
-            # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
-            lista = []
+        # try:
+        # # Tenta carregar os dados existentes
+        #     with open(self.dados, "r", encoding="utf-8") as f:
+        #         lista = json.load(f)
+        # except (FileNotFoundError, json.JSONDecodeError):
+        #     # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
+        lista = []
 
     
         # Adiciona os novos funcionários
