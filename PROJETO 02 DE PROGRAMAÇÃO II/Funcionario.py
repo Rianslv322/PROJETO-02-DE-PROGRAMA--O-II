@@ -1,6 +1,6 @@
 def linha():
     print("=-"*18)
-        
+
 
 class Funcionario():
     def __init__(self, nome, cpf, idade,cargo,salario_base,descontos):
@@ -15,6 +15,7 @@ class Funcionario():
     @property
     def ver_nome(self):
         return f"Nome do Funcionário: {self.nome}"
+    
 
         
 

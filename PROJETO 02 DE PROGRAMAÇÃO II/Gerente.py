@@ -10,14 +10,11 @@ class Gerente(Funcionario):
         self.lista_F= []
 
 
-
-
     def cadastrar_funcionario(self, nome, cpf, idade, cargo, salario_base, descontos):
         funcionario = Funcionario(nome,cpf,idade,cargo,salario_base,descontos)
         self.lista_F.append(funcionario)
         print("Funcionário cadastrado.")
         self.Salvar_Dados()
-
 
 
     def Atualizar_dados(self, dados, novo_dado, tipo):
@@ -33,15 +30,7 @@ class Gerente(Funcionario):
             if x[f"{tipo}"] == dados[f"{tipo}"]:
                 dados[f"{tipo}"] = novo_dado                    
                 lista[i] = dados 
-
                 break
-        # elif tipo == "Cargo":
-        #     for i, x in enumerate(lista):
-        #         if x["Cargo"] == dados["Cargo"]:
-        #             dados["Cargo"] = novo_dado                    
-        #             lista[i] = dados 
-
-
 
             
         # Salva tudo de uma vez
@@ -76,6 +65,7 @@ class Gerente(Funcionario):
         print("Dados salvos.")
 
     def carregar_dados(self):
+        self.lista_F = [] 
         """Carrega os dados do arquivo JSON e recria os objetos Funcionario."""
         try:
             with open(self.dados, "r", encoding="utf-8") as f:
@@ -110,9 +100,7 @@ class Gerente(Funcionario):
             if opcao == "4":
                 print("Saindo da edição...")
                 break
-
-            # nome = input("Digite o Nome do Funcionário --> ")
-            #tipo_dado = input("Digite o tipo de dado: ")
+            
             encontrado = False
 
             for func in self.lista_F:
@@ -124,13 +112,13 @@ class Gerente(Funcionario):
                         novo_dado = input("Novo Nome: ")
                         print("Nome alterado.")
 
-                    elif opcao == "2":
+                    if opcao == "2":
                         novo_dado = input("Novo Cargo: ")
                         tipo_dado = "Cargo"
 
                         print("Cargo alterado.")
 
-                    elif opcao == "3":
+                    if opcao == "3":
                         novo_dado = float(input("Novo salário: "))
                         tipo_dado = "Salario"
 
@@ -146,22 +134,40 @@ class Gerente(Funcionario):
 
 
                         
-    @property
+
     def remover_funcionario(self):
+        self.carregar_dados()
         nome = str(input("Nome do Funcionário: "))
-        
-        for posi,func in enumerate(self.lista_F):
-            if nome == func.nome:
-                del self.lista_F[posi]
+        encontrado = False
+        for func in self.lista_F:
+            if func.nome == nome:
+                self.lista_F.remove(func)
+                encontrado = True
                 print("Funcionário Demitido.")
                 break   
                 
                 
-    @property
+        if encontrado:
+            nova_lista = []
+            for i in self.lista_F:
+                dados_func = i.salvar()
+                nova_lista.append(dados_func)
+                
+                
+            with open(self.dados,"w", encoding="UTF-8") as arquivo:
+                json.dump(nova_lista,arquivo,indent=4, ensure_ascii= False)
+                
+        else:
+            print("Funcionário não encontrado")
+
     def listar_funcionarios(self):
+        self.carregar_dados()
         print("++ LISTA DE FUNCIONÁRIO ++")
         for x in self.lista_F:
             print(x.mostrar_dados_funcionario())
+            
+            
+        
             
     
     def gerar_folha_de_pagamento(self):

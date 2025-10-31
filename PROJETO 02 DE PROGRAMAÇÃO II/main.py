@@ -32,21 +32,17 @@ while True:
         descontos = float(input("Desconto: "))
         folhadepagar.gerente.cadastrar_funcionario(nome,cpf,idade,cargo,salario,descontos)
     
-
-    if opcao == 1:
-        folhadepagar.gerente.cadastrar_funcionario
-        
     if opcao ==2:
-        folhadepagar.gerente.editar_Funcionario()
+        folhadepagar.gerente.editar_Funcionario
         
         
     if opcao == 3:
-        folhadepagar.gerente.remover_funcionario
+        folhadepagar.gerente.remover_funcionario()
         
         
     if opcao == 4:
-        folhadepagar.gerente.carregar_dados()
-        folhadepagar.gerente.listar_funcionarios
+
+        folhadepagar.gerente.listar_funcionarios()
         
         
         
@@ -57,6 +53,7 @@ while True:
         folhadepagar.gerar_relatorio()
 
     if opcao ==7:
+        folhadepagar.gerente.carregar_dados()
         while True:
             print("\nMenu de Opções (Digite o número correspondente)")
             print("1 - Acessar Nome")
@@ -68,10 +65,10 @@ while True:
 
             op = int(input("Opção aqui --> "))
 
-
             if op == 1:
                 for x in folhadepagar.gerente.lista_F:
                     print(f"Nome: {x.nome}")
+
                 break
             elif op == 2:
                 for x in folhadepagar.gerente.lista_F:
@@ -81,7 +78,17 @@ while True:
                 for x in folhadepagar.gerente.lista_F:
                     print(f"CPF: {x.idade}")
 
-            
-    
+            elif op == 4:
+                for x in folhadepagar.gerente.lista_F:
+                    print(f"CPF: {x.cargo}")
+                    
+            elif op == 5:
+                for x in folhadepagar.gerente.lista_F:
+                    print(f"CPF: {x.salario}")
+                    
+            elif op == 6:
+                print("Acesso encerrado.")
+                break   
+        
         
         
