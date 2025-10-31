@@ -1,6 +1,5 @@
 import json
 from Funcionario import *
-# from Folha_de_pagameto import *
 
 class Gerente(Funcionario):
     dados = "Arquivo.json"
@@ -16,7 +15,7 @@ class Gerente(Funcionario):
         print("Funcionário cadastrado.")
         self.Salvar_Dados()
 
-
+    #class para atualizar dados json e transformar de volta em dict\lista
     def Atualizar_dados(self, dados, novo_dado, tipo):
         try:
         # carrega os dados existentes
@@ -32,18 +31,17 @@ class Gerente(Funcionario):
                 lista[i] = dados 
                 break
 
-            
         # Salva tudo de uma vez
         with open(self.dados, "w", encoding="utf-8") as f:
             json.dump(lista, f, indent=4, ensure_ascii=False)
         print("Dados salvos.")
+        
+    #class para salvar dados no json
     def Salvar_Dados(self):
         try:
-        # carrega os dados existentes
             with open(self.dados, "r", encoding="utf-8") as f:
                 lista = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
-            # Se o arquivo não existir ou estiver vazio, começa com uma lista vazia
             lista = []
 
     
@@ -51,10 +49,8 @@ class Gerente(Funcionario):
         for x in self.lista_F:
             ja_existe = False
             for func in lista:
-
                 if func["Nome"] == x.nome:
                     ja_existe = True
-
                     break
                 
             if not ja_existe:
@@ -63,7 +59,8 @@ class Gerente(Funcionario):
         with open(self.dados, "w", encoding="utf-8") as f:
             json.dump(lista, f, indent=4, ensure_ascii=False)
         print("Dados salvos.")
-
+        
+    
     def carregar_dados(self):
         self.lista_F = [] 
         """Carrega os dados do arquivo JSON e recria os objetos Funcionario."""
@@ -88,6 +85,7 @@ class Gerente(Funcionario):
     @property
     def editar_Funcionario(self):
         self.carregar_dados()
+        linha()
         while True:
             print("""
             [1] Editar Nome    
@@ -128,15 +126,16 @@ class Gerente(Funcionario):
                     self.Atualizar_dados(dicio, novo_dado, tipo_dado)
                     
                     break
-
+            linha()
             if not encontrado:
                 print("Funcionário não encontrado.")
-
+        linha()
 
                         
 
     def remover_funcionario(self):
         self.carregar_dados()
+        linha()
         nome = str(input("Nome do Funcionário: "))
         encontrado = False
         for func in self.lista_F:
@@ -146,7 +145,7 @@ class Gerente(Funcionario):
                 print("Funcionário Demitido.")
                 break   
                 
-                
+        linha()  
         if encontrado:
             nova_lista = []
             for i in self.lista_F:
@@ -162,30 +161,12 @@ class Gerente(Funcionario):
 
     def listar_funcionarios(self):
         self.carregar_dados()
+        linha()
         print("++ LISTA DE FUNCIONÁRIO ++")
         for x in self.lista_F:
             print(x.mostrar_dados_funcionario())
+        linha()
             
             
-        
-            
-    
-    def gerar_folha_de_pagamento(self):
-        self.carregar_dados()
-        for x in self.lista_F:
-            print(x.calcular_salario())
-
-
-                
-            
-
-
-
-
-# Gerente_geral_da_Empresa.cadastrar_funcionario("Ana", "741-852", 26, "TI", 5000, 600)
-# Gerente_geral_da_Empresa.Salvar_Dados()
-# Gerente_geral_da_Empresa.editar_Funcionario()
-
-
 
 

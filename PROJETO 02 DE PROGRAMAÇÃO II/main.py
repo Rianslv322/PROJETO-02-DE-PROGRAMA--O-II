@@ -2,7 +2,6 @@ from Gerente import *
 from  Funcionario import *
 from Folha_de_pagameto import *
 
-
 while True:
     print("========================================")
     print("        📋 SISTEMA DE GERENCIAMENTO      ")
@@ -22,7 +21,6 @@ while True:
 """)
     
     opcao = int(input("Opção aqui --> "))
-    
     if opcao ==1:
         nome  = str(input("Nome: "))
         cpf = str(input("CPF: "))
@@ -34,17 +32,13 @@ while True:
     
     if opcao ==2:
         folhadepagar.gerente.editar_Funcionario
-        
-        
+         
     if opcao == 3:
-        folhadepagar.gerente.remover_funcionario()
-        
+        folhadepagar.gerente.remover_funcionario() 
         
     if opcao == 4:
 
         folhadepagar.gerente.listar_funcionarios()
-        
-        
         
     if opcao == 5:
         folhadepagar.gerar_relatorio_individual()
@@ -55,6 +49,7 @@ while True:
     if opcao ==7:
         folhadepagar.gerente.carregar_dados()
         while True:
+            linha()
             print("\nMenu de Opções (Digite o número correspondente)")
             print("1 - Acessar Nome")
             print("2 - Acessar CPF")
@@ -62,6 +57,7 @@ while True:
             print("4 - Acessar Cargo")
             print("5 - Acessar Salário Base")
             print("0 - Sair")
+            linha()
 
             op = int(input("Opção aqui --> "))
 
@@ -69,7 +65,6 @@ while True:
                 for x in folhadepagar.gerente.lista_F:
                     print(f"Nome: {x.nome}")
 
-                break
             elif op == 2:
                 for x in folhadepagar.gerente.lista_F:
                     print(f"CPF: {x.cpf}")
@@ -86,7 +81,7 @@ while True:
                 for x in folhadepagar.gerente.lista_F:
                     print(f"CPF: {x.salario}")
                     
-            elif op == 6:
+            elif op == 0:
                 print("Acesso encerrado.")
                 break   
         

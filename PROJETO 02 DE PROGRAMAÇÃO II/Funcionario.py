@@ -1,7 +1,6 @@
 def linha():
     print("=-"*18)
 
-
 class Funcionario():
     def __init__(self, nome, cpf, idade,cargo,salario_base,descontos):
         self.nome = nome
@@ -15,8 +14,6 @@ class Funcionario():
     @property
     def ver_nome(self):
         return f"Nome do Funcionário: {self.nome}"
-    
-
         
 
     def calcular_salario(self):
@@ -32,18 +29,17 @@ class Funcionario():
             "Cargo": self.cargo,
             "Salario": self.salario,
             "Desconto": self.descontos}
-
-        
+ 
         
     def mostrar_dados_funcionario(self):
         linha()
         return (f"""
-        Nome: {self.nome}
-        CPF: {self.cpf}
-        Idade: {self.idade}
-        Cargo: {self.cargo}
-        Salário: {self.salario}:
-        Desconto: {self.descontos}""")
+    Nome: {self.nome}
+    CPF: {self.cpf}
+    Idade: {self.idade}
+    Cargo: {self.cargo}
+    Salário: {self.salario}:
+    Desconto: {self.descontos}""")
         
 
 
